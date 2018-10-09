@@ -828,5 +828,6 @@
     <string name="note_could_not_sent">Could not send note</string>
     <string name="hint_note">Note</string>
     <string name="shared_avatar_desc">Avatar from shared user</string>
+    <string name="shared_with_you_by">Shared with you by %1$s</string>
 
 </resources>
