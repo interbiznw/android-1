@@ -23,7 +23,6 @@ package com.owncloud.android.files;
 
 import android.accounts.Account;
 import android.content.Context;
-import android.os.Build;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -35,6 +34,7 @@ import com.owncloud.android.files.services.FileUploader.FileUploaderBinder;
 import com.owncloud.android.lib.resources.status.OCCapability;
 import com.owncloud.android.services.OperationsService.OperationsServiceBinder;
 import com.owncloud.android.ui.activity.ComponentsGetter;
+import com.owncloud.android.ui.activity.RichDocumentsWebView;
 import com.owncloud.android.utils.MimeTypeUtil;
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ import java.util.List;
 
 /**
  * Filters out the file actions available in a given {@link Menu} for a given {@link OCFile}
- * according to the current state of the latest. 
+ * according to the current state of the latest.
  */
 public class FileMenuFilter {
 
@@ -265,7 +265,7 @@ public class FileMenuFilter {
     }
 
     private void filterOpenAsRichDocument(List<Integer> toShow, List<Integer> toHide, OCCapability capability) {
-        if (isSingleFile() && android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT &&
+        if (isSingleFile() && android.os.Build.VERSION.SDK_INT >= RichDocumentsWebView.MINIMUM_API &&
                 capability.getRichDocumentsMimeTypeList().contains(mFiles.iterator().next().getMimeType())) {
             toShow.add(R.id.action_open_file_as_richdocument);
         } else {
